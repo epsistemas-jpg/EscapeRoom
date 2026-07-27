@@ -242,43 +242,20 @@ function answer(choice,correct,button){
 
   locked=true;
 
-  const feedback=document.querySelector(".feedback");
-
-  if(choice===correct){
-    button.classList.add("good");
-    feedback.className="feedback ok";
-    feedback.textContent="✓ Acceso concedido...";
-    audio("ok");
-
-    setTimeout(()=>{
-      level++;
-      locked=false;
-
-      if(level===6){
-        victory();
-      }else{
-        renderMission();
-      }
-    },800);
-
-  }else{
-    button.classList.add("bad");
-    feedback.className="feedback no";
-    feedback.textContent="⚠ El atacante aprovechó ese error.";
-    audio("bad");
+  if(choice!==correct){
     mistakes++;
-
-    setTimeout(()=>{
-      level++;
-      locked=false;
-
-      if(level===6){
-        victory();
-      }else{
-        renderMission();
-      }
-    },850);
   }
+
+  setTimeout(()=>{
+    level++;
+    locked=false;
+
+    if(level===6){
+      victory();
+    }else{
+      renderMission();
+    }
+  },180);
 }
 
 function fail(){
